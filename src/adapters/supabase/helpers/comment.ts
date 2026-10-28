@@ -83,7 +83,8 @@ export class Comment extends SuperSupabase {
     let finalMarkdown = shouldSkipEmbedding ? null : commentData.markdown;
     let finalPayload = commentData.payload;
 
-    if (isPrivate) {
+    const shouldRedact = isPrivate && Boolean(this.context.config?.redactPrivateRepoComments);
+    if (shouldRedact) {
       finalMarkdown = null;
       finalPayload = null;
     }
@@ -125,7 +126,8 @@ export class Comment extends SuperSupabase {
     let finalMarkdown = shouldSkipEmbedding ? null : commentData.markdown;
     let finalPayload = commentData.payload;
 
-    if (isPrivate) {
+    const shouldRedact = isPrivate && Boolean(this.context.config?.redactPrivateRepoComments);
+    if (shouldRedact) {
       finalMarkdown = null;
       finalPayload = null;
     }

@@ -9,6 +9,10 @@ import { StaticDecode, Type as T } from "@sinclair/typebox";
  */
 export const pluginSettingsSchema = T.Object(
   {
+    redactPrivateRepoComments: T.Boolean({
+      default: false,
+      description: "When true, redacts markdown and payload for comments and issues in private repositories.",
+    }),
     dedupeMatchThreshold: T.Number({ default: 0.95, description: "The minimum similarity score when considering existing issues to be duplicates." }),
     dedupeWarningThreshold: T.Number({ default: 0.75, description: "Issues above this similarity score will be marked as a potential duplicate." }),
     annotateThreshold: T.Number({
